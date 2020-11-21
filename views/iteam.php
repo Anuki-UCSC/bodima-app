@@ -17,7 +17,7 @@
 
 	<div class="postBoarding"><h1>Add Iteam</h1></div><!-- postBoarding -->
 		<div class=main>
-			<form action="../controller/foodPostCon.php" method="post" enctype="multipart/form-data"  id="postBoarding">
+			<form action="../controller/iteamCon.php" method="post" enctype="multipart/form-data"  id="postBoarding">
 			
 
 				<!--<label for="">Address  </label><br>-->
@@ -35,25 +35,26 @@
 				<input type="text" name="price" id="price" >
 
 			
-			
-				<h3 class="name">Breakfirst</h3 >
+			<br>
+				
 				<label class="radio">
-					<input type="radio" name="breakfirst" id="breakfirst" value="1"><span id="breakfirst" >&nbsp; Yes</span>&nbsp;&nbsp;
-					<input type="radio" name="breakfirst" id="breakfirst" value="0"><span id="breakfirst" >&nbsp; No</span>&nbsp;&nbsp;<br>
+					<input type="checkbox" name="breakfirst" id="breakfirst" value="1"><span id="breakfirst" >&nbsp;Breakfirst</span>&nbsp;&nbsp;
+					
 				</label>
 				
-		
-				<h3 class="name">Lunch</h3 >
+		<br>
+				
 				<label class="radio">
-					<input type="radio" name="lunch" id="lunch" value="1"><span id="lunch" >&nbsp; Yes</span>&nbsp;&nbsp;
-					<input type="radio" name="lunch" id="lunch" value="0"><span id="lunch" >&nbsp; No</span>&nbsp;&nbsp;<br>
+					<input type="checkbox" name="lunch" id="lunch" value="1"><span id="lunch" >&nbsp; Lunch</span>&nbsp;&nbsp;<br>
+					
 				</label>
 				
-		
-				<h3 class="name">Dinner</h3 >
+        <br>
+        
+				
 				<label class="radio">
-					<input type="radio" name="dinner" id="dinner" value="1"><span id="dinner" >&nbsp; Yes</span>&nbsp;&nbsp;
-					<input type="radio" name="dinner" id="dinner" value="0"><span id="dinner" >&nbsp; No</span>&nbsp;&nbsp;<br>
+					<input type="checkbox" name="dinner" id="dinner" value="1"><span id="dinner" >&nbsp;Dinner</span>&nbsp;&nbsp;<br>
+					
 				</label>
 						
 				

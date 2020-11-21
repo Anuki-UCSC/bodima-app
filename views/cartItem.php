@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../resource/css/card1.css">
+    <link rel="stylesheet" href="../resource/css/card.css">
     <link rel="stylesheet" href="../resource/css/nav.css">
     <link rel="stylesheet" href="../resource/css/footer.css">
     <link rel="stylesheet" href="../resource/css/all.css">
@@ -19,87 +20,40 @@
 <?php 
    if(isset($_SESSION['order_id']))
    {
+    //    echo $_SESSION['order_id'];
     $order_records=reg_user::getOrder($connection,$_SESSION['order_id']);
-    $order_record=mysqli_fetch_assoc($order_records);
-    if($order_record['is_accepted']==1){
-        $_SESSION['isdisable']=0;
-    }
+    // print_r($order_records);
+    // $order_record=mysqli_fetch_assoc($order_records);
+    // if($order_record['is_accepted']==1){
+    //     $_SESSION['isdisable']=0;
+    // }
    }
-?>
-                 <!-- button disable and enable function -->
-<script>  function disBtn()
-                    {
-                        document.addEventListener("DOMContentLoaded", function(event) {
-                        document.querySelector(".btn3").disabled = true;
-                        document.querySelector(".btn5").disabled = true;
-                        document.querySelector('.btn3').style.backgroundColor="gray";
-                        document.querySelector('.btn5').style.backgroundColor="gray";
-                    <?php   if(isset($_SESSION['isdisable']))
-                        { 
-                             if($_SESSION['isdisable']==1)
-                                 {
-                               ?>
-                                    document.querySelector(".request").disabled = true;
-                                    document.querySelector('.request').style.backgroundColor="gray";
-                                    document.querySelector('.request').innerHTML="Pending";
-                     <?php   }else{
-                         ?>         document.querySelector(".request").disabled = true;
-                                    document.querySelector('.request').style.backgroundColor="green";
-                                    document.querySelector('.request').innerHTML="Accepted";
-                                    document.querySelector(".btn3").disabled = false;
-                                    document.querySelector(".btn5").disabled = false;
-                                    document.querySelector('.btn5').style.backgroundColor="rgb(1, 151, 56)";
-                                    document.querySelector('.btn3').style.backgroundColor="rgb(255, 30, 30)";
-                         <?php
-                     }
-                    }else{
-                        ?>
-                    <?php
-                    }?>
+?>                         <!-- header-bar -->
+ <div class="cart-icon">
+    <?php 
+   
+      if(isset($_SESSION['cart']))
+      {
+        $count=count($_SESSION['cart']);
+        echo '<a href="cartItem.php"><i class="fas fa-shopping-cart"></i> Cart <span id="cart-count" class="count">'.$count.'</span></a>
+        ';
+      }
+    ?>
+   </div>
 
-                }  
-            ); 
-        }
-    // call the script function
-disBtn();
-</script>
-    
-                                    <!-- header-bar -->
-<div class="cart-wrap">
-<h2 >Product Card</h2>
-  <div class="cart-icon">
-    <?php 
-   
-      if(isset($_SESSION['cart']))
-      {
-        $count=count($_SESSION['cart']);
-        echo '<a href="cartItem.php"><img  src="../resource/img/cart-plus-solid.svg" alt=""> Cart <span id="cart-count" class="count">'.$count.'</span></a>
-        ';
-      }
-    ?>
-   </div>
-   <div class="cart-icon">
-    <?php 
-   
-      if(isset($_SESSION['cart']))
-      {
-        $count=count($_SESSION['cart']);
-        echo '<a href="cartItem.php">Total <span id="cart-count" class="count">'.$count.'</span></a>
-        ';
-      }
-    ?>
-   </div>
-</div>
                                 <!-- product-cart and product order deatils -->
  <div class="grid-item">
  <div class="mycart">
+     <div class="mycart-header">
+    <!-- <?php echo '<a href="cart.php?Pid='.$_GET["Pid"].'&name='.$_GET["name"].'&address='.$_GET["address"].'"><i class="fas fa-chevron-circle-left fa-2x"></i></a>'; ?> -->
     <h5>My Cart</h5>
+     </div>
 <?php 
 $total=0;
  if(isset($_SESSION['cart']))
  {
     $result=reg_user::getProduct($connection);
-    $product_id=array_column($_SESSION['cart'],'product_id'); //create array
+    $product_id=array_column($_SESSION['cart'],'product_id'); //create array of product_ids
     $amount=0;
          while($row=mysqli_fetch_assoc($result))
          {
@@ -144,7 +98,7 @@ $total=0;
                                          <!-- order price details -->
 
       <?php $count=count($_SESSION['cart']); 
-            $_SESSION['total']=$total;
+            $_SESSION['total']=$total; 
       ?>
      <div class="payment">
      <div class="price-details">
@@ -155,36 +109,17 @@ $total=0;
             <h5>price (<?php echo $count ?>) item<span class="left-item">Rs <?php echo $total; ?></span></h5>
             <h5>delivery Charges <span style="color: green;" class="left-item">Free</span></h5>
             <h4>Amount payable<span class="left-item1">Rs <?php echo $total; ?></span> </h4>
-            <button type="button" id="request" onclick="window.location='../controller/orderCon.php?click1';" class="btn6 request">Request </button>
-        </div>
-     </div>
-                                             <!-- payment method -->
-     <div class="price-details">
-        <div class="total">
-            <h3>Payment method</h3>
-        </div>
-        <div class="details">
-            <h5>Total payment <span class="left-item">Rs <?php echo $total; ?></span></h5>
-            <h4>Select payment method </h4>
-            <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
-                <button id="request" type="button" class="btn5" disabled>Pay with cash(<?php echo $count ?>) </button>
-                <button id="request" class="btn3" id="btn3" disabled>Pay with card(<?php echo $count ?>) </button>
-                <input type="hidden" name="merchant_id" value="1215562">    <!-- Replace your Merchant ID -->
-                <input type="hidden" name="return_url" value="http://localhost/mvc/application/views/sucsses.php">
-                <input type="hidden" name="cancel_url" value="http://localhost/mvc/application/views/sucsses.php">
-                <input type="hidden" name="notify_url" value="http://localhost/mvc/application/config/payCon.php">  
-                <input type="hidden" name="order_id" value="<?php echo "OrderNo".+time().rand(); ?>">
-                <input type="hidden" name="items" value="siri niwasa"><br>
-                <input type="hidden" name="currency" value="LKR">
-                <input type="hidden" name="amount" value="<?php echo $total; ?>">  
-                <input type="hidden" name="first_name" value="<?php echo $_SESSION['first_name'];?>">
-                <input type="hidden" name="last_name" value="<?php echo $_SESSION['last_name'];?>"><br>
-                <input type="hidden" name="email" value="<?php echo $_SESSION['email'];?>">
-                <input type="hidden" name="phone" value="0771234567"><br>
-                 <input type="hidden" name="address" value="No.1, Galle Road"> 
-                 <input type="hidden" name="city" value="Colombo">
-                 <input type="hidden" name="country" value="Sri Lanka"><br><br> 
+            <form action="../controller/orderCon.php" method="post">
+                <h4>Enter delivery address :</h4>
+                <?php if(isset($_GET['errorAddress'])) echo "<h5 style='color:red'>*Please enter the delivery address</h5>"; ?>
+                <input type="hidden" name="Pid" value="<?php echo $_GET['Pid'];?>">
+                <input type="text" placeholder="ex:310/delgasduwa/dodanduwa" name="address"  ?>
+                <h4>Enter phone number :</h4>
+                <?php if(isset($_GET['errorPhone'])) echo "<h5 style='color:red'>*Please enter the delivery address</h5>"; ?>
+                <input type="text" placeholder="ex:07x xxx xxx xxxx" name="phone"  ?>
+                <button name="submit" type="submit" id="request" class="btn6 request">Request </button>
             </form>
+           
         </div>
      </div>
      </div>

@@ -185,10 +185,12 @@ public function CreateBoardingPages($id) {
         {
             $result = $result .
                     "
+                    <div class='div_a' style='padding:20px;'>
+
                      <table class = 'boardingPostpage'>
 
                         <tr>
-                            <th rowspan='3' width = '150px' ><img runat = 'server' src = '$boarding_post->image' /></th>
+                            <th rowspan='3' width = '150px' ><img runat = 'server' src = '$boarding_post->image' style='width:300px; padding-left:50px; padding-right:40px;'/></th>
                             <th width = '75px' >location: </th>
                             <td>$boarding_post->city</td>
                         </tr>
@@ -204,23 +206,14 @@ public function CreateBoardingPages($id) {
                             
                         </tr> 
                         
-                        <tr>
-                            <th> </th>
-                            <td></td>
+                        <tr colspan='2'> 
                         </tr>
-                        
+                            
                         
 
-                        </table>
+                    </table>
 
-                        <div class='price tag'>
-                             <div class='T_Header'>
-                             Price (per person):
-                            </div>
-                            <div class='T_Define'>
-                             $boarding_post->cost_per_person
-                            </div>
-                        </div>
+                        
 
                         <div class='Address tag'>
                              <div class='T_Header'>
@@ -253,7 +246,11 @@ public function CreateBoardingPages($id) {
                             request this boarding place :  
                             <form action='../controller/SRequestIshan.php?click1&description=$boarding_post->description&category=$boarding_post->category&B_post_id=$boarding_post->B_post_id&city=$boarding_post->city&BOid=$boarding_post->BOid' method='post'><input id='demo' class='btn6 request' type='submit' value='Request'></form>
                                </div>
-                    </div>";
+                    </div>
+                    
+                </div>    "
+                    
+                    ;
         }        
         return $result;
         

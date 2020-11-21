@@ -27,7 +27,7 @@ class FoodPostController {
         foreach ($FoodPostArray as $key => $food_post) 
         {
             $result = $result .
-                    "<a class='divtable' href='../views/cart.php?id=$food_post->F_post_id'>
+                    "<a class='divtable' href='../controller/cartClearCon.php?Pid=$food_post->F_post_id&name=$food_post->ad_title&address=$food_post->address'>
                     <table class = 'foodPostTable'>
                         <tr>
                             

@@ -38,13 +38,17 @@
 		   	<input type="password" name="confirmpassword" placeholder="Confirm Password">
 		   	<div class="agreement">
                      <div class="term"><b>Term and condition</b></div> 
-					<textarea name="aggrement" id="1" cols="30" rows="5">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repudiandae eveniet aut, quia ea labore,                                            2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio repudiandae eveniet aut, quia ea labore, quis
+					<textarea name="aggrement" id="1" cols="30" rows="5">
+1. This is a Web platform for Adverting boarding places. We do not assure you about your sensitive information(ex: credit card details). Please create a pay here account before you making online payments.
+
+2. We will use your location information to provide you a better experience. We do not store any searching information or location information on our platform.	
 					</textarea>
             </div>
                             
             <div class="check">
                  <input id="check"  type="checkbox" name="check">
-                 <div class="agree"> I am agree with term and condition</div> 
+				 <div class="agree"> I am agree with term and condition</div> 
+
                  
             </div>
 			<input type="hidden" name="email" value="<?php echo $_GET['email'];?>">

@@ -13,6 +13,21 @@
 
 	<div class="postBoarding"><h1>Post On Your Site</h1></div><!-- postBoarding -->
 		<div class="main">
+
+		<div class=error-post>
+			<?php
+			if(isset($_GET['param']))
+			{
+				$errors=$_GET['param'];
+				foreach($errors as $error)
+				{
+					echo '<p class="error"><b>'.$error.'</b></p>';
+				}
+			}
+			
+			?>
+		</div>
+
 			<div class="second_name"><h2>Resturent Details</h2></div>
 			<form action="../controller/foodPostCon.php" method="post" enctype="multipart/form-data"  id="postBoarding">
 			
@@ -59,16 +74,16 @@
 			
 
 				<div class="group">
-				<h3 class="name">Avertisement Lifespan (Month)</h3 >
+				<h3 class="name">Avertisement Lifespan (Days)</h3 >
 				
-				<input type="number" name="Lifespan" id="lifespan" value="1" min="1" max="" class="control prc" >
+				<input type="number" name="Lifespan" id="lifespan" value=30 class="control prc" >
 				</div>
 				
 				<div class="group">
 				
 				<h3 class="name">Avertisement Amount : Rs</h3 >
 				<!-- <output  name="result" id="result"></output> -->
-				<input type="text" disabled name="Aamount" id="Aamount"  ><br><br>
+				<input type="text" disabled name="Aamount" id="Aamount" value=3000  ><br><br>
 				</div>
 					
 				<br>
@@ -80,7 +95,7 @@
 				
 			
 
-				<script src="jquery-3.5.1.min.js"></script>
+				<script src="../resource/js/jquery-3.5.1.min.js"></script>
 				<script>
 					$('.group').on('input','.prc',function(){
 						var totalsum =0;

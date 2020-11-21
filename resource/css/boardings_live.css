@@ -73,10 +73,16 @@ body{
     padding-left:1%;
 }
 
+.divtable{
+    text-decoration: none;
+    color: black;
+}
 
-img{
+.inner_img img{
     
-    height:150px;
+    width: 220px; /* width of container */
+    height: 150px; /* height of container */
+    overflow: hidden;
 }
 
 .img_th{
@@ -116,5 +122,38 @@ th{
 
 }
 
+.popup_signin{
+    width:400px;
+    height: 220px;
+    /* background: rgb(9,9,121); */
+/* background: linear-gradient(212deg, rgba(9,9,121,0.969393783740783) 0%, rgba(0,212,255,0.9665847949767381) 100%); */
+    z-index: 100;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top:300px;
+    left:36%;
+    border-radius: 15px;
+    /* top 0.2s ease 0s, left 0.2s ease 0s, margin-bottom 0.2s ease 0s; */
+    background: rgb(9,9,121);
+background: linear-gradient(212deg, rgba(9,9,121,0.6828769298081987) 0%, rgba(0,212,255,0.6098432219430302) 100%);
+}
 
+#close{
+    font-size: 20px;
+    color: rgb(199, 197, 197);
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    border:2px solid  rgb(199, 197, 197);
+    z-index: 200;
+    position: absolute;
+    left:400px;
+    top:-15px;
+    margin-left: 3px;
+    cursor: pointer;
+}
 
+.popup_signin span :hover{
+    background-color: black;
+
+}

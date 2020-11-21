@@ -377,3 +377,8 @@ input:hover {
     border: 1px solid#e0e5ec;
     margin-top: 5px;
 }
+
+.error b {
+    margin-left: 20px;
+    color: red;
+}

@@ -290,10 +290,13 @@ a.divtable{
    
 }
 
+
 .boardingPostTable img{
     padding:0px 10px 10px 10px;
     height: 150px;
     width: 150px;
+
+    /* inline style added */
 
 }
 

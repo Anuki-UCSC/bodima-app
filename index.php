@@ -1,4 +1,4 @@
-﻿<?php session_start();
+<?php session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,139 +7,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="resource/css/home.css">
+    <link rel="stylesheet" href="resource/css/new_home.css">
     <link rel="stylesheet" href="resource/css/all.css">
     </head>
 
 <body >
-    <div class="container" id="container">
+<div class="container" id="container">
         <div class="header">
             <div class="logo">
                 <img src="resource/img/logo.png" alt="">
-                <h1><small style="font-size: 14px; color:rgb(13, 13, 189);">   Solution for many problem</small></h1>
+                <h1><small style="font-size: 14px; color:gray;font-weight:normal">   Solution for many problem</small></h1>
             </div>
             <div class="sign">
                 
-                <?php if(!isset($_SESSION['email'])){echo '<a href="controller/logingController.php?click1">Sign In <i class="fa fa-sign-in-alt"></i></a>';}?>
+                <?php if(!isset($_SESSION['email'])){?>
+                    <button onclick="window.location='views/register.php'">Sign Up <i class="fas fa-user-plus"></i></button>
+                    <button onclick="window.location='controller/logingController.php?click1'">Sign In <i class="fa fa-sign-in-alt"></i></button>
+                    <?php }?>
                 <?php if(isset($_SESSION['email'])){ 
-                    if($_SESSION['level']=='administrator'){echo '<a href="controller/adminPanelCon.php?admin"> Dash Board &nbsp</a>'; }
+                  
                     ?>
                     
-                    <div class="notification"><i class="fa fa-bell"></i></div>
-                    <div class="profile"><a href="views/profilepage.php"> <i  class="fa fa-user-circle"></a></i></div>
+                    <div class="notification">
+                        <i class="fa fa-bell fa-lg"></i>
+                        <div class="notification-box" >
+                            <ul>
+                                <li><i class="fas fa-times fa-2x"></i></li>
+                                <a href="#"><li>You have notification</li></a>
+                                <a href="#"><li>You have notification</li></a>
+                                <a href="#"><li>You have notification</li></a>
+                                <a href="#"><li>You have notification</li></a>
+                                <a href="#"><li>You have notification</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="profile"><a href="views/profilepage.php"> <i class="fa fa-user-circle fa-lg"></a></i></div>
                 <?php
-                    echo '<div class="user">Hi '.$_SESSION['first_name'].'</div>'; 
-                    echo '<a href="controller/logoutController.php">Sign out <i class="fa fa-sign-out-alt"></i></a>';}
-                ?> 
+                    echo '<div class="user"><h4>Welcome '.$_SESSION['first_name'].'</h4></div>'; 
+                    if($_SESSION['level']=='administrator'){?> <button onclick="window.location='controller/adminPanelCon.php?admin'"><i class="fas fa-cogs"></i> Dash Board </button>&nbsp<?php }
+                    ?>
+                    <button onclick="window.location='controller/logoutController.php'">Sign out <i class="fa fa-sign-out-alt"></i></button>
+                <?php } ?> 
                 
             </div>
         </div>
         <div class="nav">
-            <ul class="nav_bar">
-                    <div class="burger">
+                <div class="burger">
                         <div>
                             <div class="line1"></div>
                             <div class="line2"></div>
                             <div class="line3"></div>
                         </div>
                     </div>
-                <li class=" nav_item "><a href="# "><i class=" fa fa-home"></i>Home</a></li>
-                <li class="nav_item "><a href="views/boardings.php"><i class="fa fa-bed"></i> Boardings</a></li>
-                <li class="nav_item "><a href="views/foodposts.php"><i class="fas fa-hamburger"></i> Order Foods</a></li>
-                <li class="nav_item "><a href="views/about.php"><i class="fa fa-address-card"></i> About us</a></li>
-                <li class="nav_item "><a href="views/contact_us.php"><i class="fa fa-address-book"></i> Contact Us</a></li>
+            <ul class="nav_bar">
+                <li class="nav_item " onclick="window.location='#'"><i class=" fa fa-home"></i>Home</li>
+                <li class="nav_item " onclick="window.location='views/boardings.php'"><i class="fa fa-bed"></i> Boardings</li>
+                <li class="nav_item " onclick="window.location='views/foodposts.php'"><i class="fas fa-hamburger"></i> Order Foods</li>
+                <li class="nav_item " onclick="window.location='views/about.php'"><i class="fa fa-address-card"></i> About us</li>
+                <li class="nav_item " onclick="window.location='views/contact_us.php'"><i class="fa fa-address-book"></i> Contact Us</li>
             </ul>
         </div>
-        <div class="container_warper1">
-            <div class="para1">
-                <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""></i> Are you Still looking for a boarding ?</h1>
-                <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""></i> Couldn't find a suitable place ? </h1>
-                <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""></i> Was it a waste of money and time ?</h1>
-                <h1 class="reg">Try Our Solution</h1>
-                <?php if(!isset($_SESSION['email'])) 
-                    echo '<div class="btn1"> <a href="views/register.php"><i class="fa fa-user-plus"></i> Register</a></div>';
-                else
-                    echo '<div class="btn1"> <a href="views/boardings.php"><i class="fa fa-bed"></i> Search </a></div>';
-                     ?>
-            </div>
-            <div class="para2">
-               <!-- <img src="./img/test4.jpg" alt=""> -->
-                
-            </div>
-        </div>
-        <div class="container_warper2">
-            <div class="para3">
-                <!-- <img class="img2-apper" src="./img/test4.jpg" alt=""> -->
-            </div>
-            <div class="para4">
-                <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""> Want to increase the number of food orders at your restaurant ?</h1>
-                <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""> Is it possible to deliver food orders ?</h1>
-                <h1 class="reg">We have solution !</h1>
-                <?php if(!isset($_SESSION['email'])) 
-                    echo '<div class="btn1"> <a href="views/register.php"><i class="fa fa-user-plus"></i> Register</a></div>';
-                else
-                    echo '<div class="btn1"> <a href="views/boardings.php"><i class="fa fa-ad"></i> Add post</a></div>';
-                     ?>
-            </div>
-        </div>
-        <div class="container_warper3">
-            <div class="para5">
-                <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""> Looking for a lease on board ?</h1>
-                <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""> Was it useless to publish advertisements ? </h1>
-                <!-- <h1><img src="./resource/img/hand-point-right-solid.svg" alt=""> Not found ?</h1> -->
-                <h1 class="reg">We have solution !</h1>
-                <?php if(!isset($_SESSION['email'])) 
-                    echo '<div class="btn1"> <a href="views/register.php"><i class="fa fa-user-plus"></i> Register</a></div>';
-                else
-                    echo '<div class="btn1"> <a href="views/boardings.php"><i class="fa fa-ad"></i> Add post</a></div>';
-                     ?>
-            </div>
-            <div class="para6">
-
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-
-        <div class="grid-container">
-            <div class="grid-item">
-            <h3>Project Bodima</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi ab sed recusandae possimus adipisci nobis reiciendis dicta placeat? Eos.
-            </p>
-            </div>
-            <div class="grid-item">
-                <h3>Contact Us</h3>
-                <ul>
-                    <li><i style="color: blue;" class="fa fa-map-marker fa-lg"></i>  UCSC Building Complex, 35 Reid Ave, Colombo 7</li>
-                    <li><i style="color: blue;" class="fa fa-phone fa-lg"></i>  +94 0119999999</li>
-                    <li><i style="color: blue;" class="fa fa-paper-plane fa-lg"></i>  Projectbodima4group12@gmail.com</li>
-                </ul>
-            </div>
-            <div class="grid-item">
-                <h3>About Us</h3>
-                <ul>
-                    <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Anuki alwis</li>
-                    <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Ishan resmika</li>
-                    <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Nimasha Supunpaba</li>
-                    <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Amal lakshan</li>
-                </ul>
-            </div>
-
-        </div>
-        <div class="follow">
-            <h2>Follow Us</h2>
-           <div class="social">
-            <a href="index.php"><i class="fab fa-linkedin-in fa-2x"></i></a>
-            <a href="index.php"><i class="fab fa-facebook-f fa-2x"></i></a>
-            <a href="index.php"><i class="fab fa-twitter fa-2x"></i></a>
-            <a href="index.php"><i class="fab fa-whatsapp fa-2x"></i></a>
-           </div>
-        </div>
-        <div class="copyright">
-            <h2>© 2020 copyright all right reserved</h2>
-        </div>
-
         <div class="slide-nav">
             <ul><?php if(isset($_SESSION['email'])){?> 
                     <li onclick="window.location='views/profilepage.php'">Profile</li>
@@ -152,18 +79,152 @@
                       <li onclick='window.location="views/ConBODealIshan.php"'>Confirm Deal </li>
                       <li onclick='window.location="views/TBOReqIshan.php"'>Request</li>
                    <?php } ?>
+                   <?php if($_SESSION['level']=='boardings_owner' || $_SESSION['level']=='boarder'){?>
+                    <li onclick='window.location="views/paymentFood_pending.php"'>My food Orders</li>
+                    <?php } ?>
                     <li onclick='window.location="views/TBOReqIshan.php"'>Log out</li>
                 <?php } else{?>
                     <h4>Plase sign in first to system.</h4>
-                        <h3 class="nav-sign" onclick="window.location='controller/logoutController.php'">Sign in </h3>
+                        <h3 class="nav-sign" onclick="window.location='views/user_loging.php'">Sign in </h3>
                         
                 <?php } ?>
                 </ul>
         </div>
-    </div>
-
+        <div class="section1">
+            <img src="resource/img/hostel-img3.jpg" alt="">
+            <div class="section1-header">
+               <div>
+                 <h2 >Welcome to Bodima</h2>
+                 <h4>Accomadation management system</h4>
+                <?php if(!isset($_SESSION['email'])){ ?> <button onclick="window.location='views/register.php'">Register</button><?php } ?>
+                 <h3></h3>
+                 <!-- <h1>To Search, To Find, To delivery</h1> -->
+                 <!-- <h1>To Find,To Search,To Delivery</h1> -->
+               </div>
+            </div>
+        </div>
+        <div class="section2">
+            <!-- <img src="resource/img/hostel-img1.jpg" alt=""> -->
+            <div class="section2-header">
+               <div>
+                 <h2>Bodima</h2>
+                 <div class="component">
+                     <div class="find">
+                        <h1>To <b style="color: blue;">F</b>ind</h1>
+                        <img src="resource/img/find.svg" alt="">
+                        <p>Finding a boarding place hard for you. We are giving easy way to you find a boarding place </p>
+                        <p style="color: blue;cursor:pointer">read more</p>
+                     </div>
+                     <div class="boarding">
+                        <h1>To <b style="color: blue;">P</b>ost</h1>
+                        <img src="resource/img/post.svg" alt="">
+                        <p>Have you boarding with 0 incomig ? You want to turn it to incoming source. That is the place you need . Place your ads here. </p>
+                        <p style="color: blue;cursor:pointer"> read more</p>
+                     </div>
+                     <div class="delivery">
+                        
+                        <h1>To <b style="color: blue;">D</b>elivery</h1>
+                        <img src="resource/img/delivery.svg" alt="">
+                        <p> Have you resturent , Can you delivery orders for customer. Can you win customer trust. You can post our system</p>
+                        <p style="color: blue;cursor:pointer">read more</p>
+                     </div>
+                 </div>
+               </div>
+            </div>
+        </div>
+        <div class="section3">
+            <!-- <img src="resource/img/hostel-img1.jpg" alt=""> -->
+        </div>
+        <div class="section4">
+            <!-- <img src="resource/img/hostel-img1.jpg" alt=""> -->
+            <div class="section4-header">
+               <div>
+                 <h2>SEARCH BOARDING</h2>
+                 <!-- <h3>Services</h3> -->
+                 <div class="component">
+                     <div class="keymoney">
+                        <h1>Key Money <b style="color: blue;">P</b>ayment</h1>
+                        <img src="resource/img/key.svg" alt="">
+                        <p>You can pay your key money in online . We provide that service for you. If you get a boarding place using this platform then you can use this feature </p>
+                     </div>
+                     <div class="free">
+                        <h1>Monthly <b style="color: blue;">P</b>ayment</h1>
+                        <img src="resource/img/month.svg" alt="">
+                        <p>Also you can pay your month payment to boarding owner using this system. System will notified you in payment day. And you can see your payment history </p>
+                        <p></p>
+                     </div>
+                     <div class="order">
+                        <h1>Order <b style="color: blue;">F</b>ood</h1>
+                        <img src="resource/img/order.svg" alt="">
+                        <p>Anuki <---------------</p>
+                     </div>
+                 </div>
+               </div>
+            </div>
+        </div>
+        <div class="section5">
+        </div>
+        <div class="section6">
+            <!-- <img src="resource/img/hostel-img1.jpg" alt=""> -->
+            <div class="section6-header">
+               <div>
+                 <h2>POST YOUR PLACE</h2>
+                 <!-- <h3>Services</h3> -->
+                 <div class="component">
+                     <div class="post">
+                        <h1>Post <b style="color: blue;">A</b>ds</h1>
+                        <img src="resource/img/ads.svg" alt="">
+                        <p>You can pay your key money in online . We provide that service for you. If you get a boarding place using this platform then you can use this feature </p>
+                     </div>
+                     <div class="boarder">
+                        <h1>Boarder <b style="color: blue;">M</b>anage</h1>
+                        <img src="resource/img/manage.svg" alt="">
+                        <p>Also you can pay your month payment to boarding owner using this system. System will notified you in payment day. And you can see your payment history </p>
+                        <p></p>
+                     </div>
+                     <div class="order-b">
+                        <h1>Order <b style="color: blue;">F</b>ood</h1>
+                        <img src="resource/img/order.svg" alt="">
+                        <p>Anuki <---------------</p>
+                     </div>
+                 </div>
+               </div>
+            </div>
+        </div>
+        <div class="section7">
+        </div>
+        <div class="section8">
+            <!-- <img src="resource/img/hostel-img1.jpg" alt=""> -->
+            <div class="section8-header">
+               <div>
+                 <h2>POST YOUR RESTURENT</h2>
+                 <!-- <h3>Services</h3> -->
+                 <div class="component">
+                     <div class="post-a">
+                        <h1>Post <b style="color: blue;">A</b>ds</h1>
+                        <img src="resource/img/ads.svg" alt="">
+                        <p>You can pay your key money in online . We provide that service for you. If you get a boarding place using this platform then you can use this feature </p>
+                     </div>
+                     <div class="get">
+                        <h1>Get <b style="color: blue;">O</b>rders</h1>
+                        <img src="resource/img/item.svg" alt="">
+                        <p>Also you can pay your month payment to boarding owner using this system. System will notified you in payment day. And you can see your payment history </p>
+                        <p></p>
+                     </div>
+                     <div class="grow">
+                        <h1>Grow Your <b style="color: blue;">B</b>usiness</h1>
+                        <img src="resource/img/grow.svg" alt="">
+                        <p>Anuki <---------------</p>
+                     </div>
+                 </div>
+               </div>
+            </div>
+        </div>
+        <?php include '../bodima-app/views/footer.php' ?>
+</div>
 </body>
-<script src="resource/js/home1.js"></script>
 <script src="resource/js/jquery.js"></script>
-</html>
+<script src="resource/js/home1.js"></script>
+<script src="resource/js/new_home.js"></script>
 
+</html>

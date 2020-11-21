@@ -2,11 +2,18 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../resource/css/login.css">
+	<link rel="stylesheet" type="text/css" href="../resource/css/all.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap">
 	<title>Login form</title>
 	
 </head>
 <body>
+	<?php if(isset($_GET['login'])){ ?>
+	<div class="resend">
+        <div class="right"><i class="fas fa-exclamation-circle fa-2x"></i></div>
+        <div class="letter"><h4>Please login first to access this feature</h4></div>
+	</div>
+	<?php } ?>
 	<div class="image"><img src="../resource/img/login.svg" alt=""></div>
 	<div class="container">
 		<div class="para">

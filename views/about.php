@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="back-img">
-   <!-- <div class="back-image"> <img src="../resource/img/about-us3.png" alt=""></div> -->
+   <div class="back-image"> <img src="../resource/img/about-us1.jpg" alt=""></div>
 <?php include 'nav.php' ?>
 
 <div class="containe">
@@ -30,11 +30,18 @@
         <h1>Meet group-12 Project-Bodima </h1>
         <p> Hi, We are undergradulates of the University Of Colombo School of Computing. This platform is a result of our 2nd year group project. We analyze the problems faced by university students. We identified two major issues facing university students by that analysis. those main problems were:
          <br/> dificulties of normal process of finding accommodation to stay. Another is to provide food. We created this platform to help them as well as facilitate them. </p>
+         <div class="profile-pic">
+             <img src="../resource/img/anuki.jpg" alt="">
+             <img src="../resource/img/ishan.jpg" alt="">
+             <img src="../resource/img/nimasha.jpg" alt="">
+             <img src="../resource/img/pp.jpg" alt="">
+             
+         </div>
     </div>
     <div class="pic">
-        <div class="picture">
+        <!-- <div class="picture">
             <img src="../resource/img/about.jpg" alt="">
-        </div>
+        </div> -->
       
     </div>
 </div>

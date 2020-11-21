@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="../resource/css/nav.css">
     <link rel="stylesheet" href="../resource/css/footer.css">
     <link rel="stylesheet" href="../resource/css/about_us.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../resource/css/all.css">
     
   
     <title>Document</title>
 </head>
 <body>
+<div class="back-img">
+   <div class="back-image"> <img src="../resource/img/about-us1.jpg" alt=""></div>
 <?php include 'nav.php' ?>
 
     <div class="containe">
@@ -44,6 +46,7 @@
         </div>
     </div>
    <?php include 'footer.php' ?>
+</div>
 </body>
 <script src="../resource/js/home1.js"></script>
 <script src="../resource/js/jquery.js"></script>

@@ -3,7 +3,7 @@
 <div class="grid-container">
     <div class="grid-items">
     <h3>Project Bodima</h3>
-    <p>
+    <p style="color:  rgb(180, 180, 180) ;font-weight:400;font-size:16px">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi ab sed recusandae possimus adipisci nobis reiciendis dicta placeat? Eos.
     </p>
     </div>
@@ -18,10 +18,10 @@
     <div class="grid-items">
         <h3>About Us</h3>
         <ul>
-            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Anuki alwis</li>
-            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Ishan resmika</li>
-            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Ludo</li>
-            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Amal lakshan</li>
+            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Anuki Rlwis</li>
+            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Ishan Resmika</li>
+            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Nimasha Supunpraba</li>
+            <li><i style="color: blue;" class="fa fa-user fa-lg"> </i>  Amal Lakshan</li>
         </ul>
     </div>
 
@@ -32,7 +32,7 @@
     <a href="index.php"><i class="fab fa-linkedin-in fa-2x"></i></a>
     <a href="index.php"><i class="fab fa-facebook-f fa-2x"></i></a>
     <a href="index.php"><i class="fab fa-twitter fa-2x"></i></a>
-    <a href="index.php"><i class="fab fa-whatsapp fa-2x"></i></a>
+<a href="index.php"><i class="fab fa-whatsapp fa-2x"></i></a>
    </div>
 </div>
 <div class="copyright">

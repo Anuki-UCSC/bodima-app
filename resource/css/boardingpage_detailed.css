@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+li{
+    list-style: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* **************************************************************** */
+.box_outer{
+  background-color: rgba(238, 238, 238, 0.699);
+  width: 100%;
+  height: 1200px;
+  position: relative;
+  margin-bottom: auto;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  [class*="col-"] {
+    float: left;
+    padding: 15px;
+  }
+  
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  
+  
+/* *************************************************************** */
+
+
+
+
+
+.inner_main{
+    background-color: rgb(252, 242, 225);
+    margin:30px;
+    padding:25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+
+.inner_right{
+    background-color:rgb(252, 242, 225);
+    margin:30px;
+    /* margin-bottom: 700px; */
+    padding:30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+
+}
+
+.inner_main img{
+    padding:15px;
+    width:45vw;
+}
+
+.inner_main span{
+    font-size: smaller;
+    padding-left:20px;
+}
+
+.inner_main h2{
+    padding-left:20px;
+    text-transform: uppercase;
+}
+
+.inner_main h4{
+    padding-left:20px ;
+    color: gray;   
+}
+
+.details{
+    padding: 30px;
+    font-size: medium;
+}
+
+.details li{
+    padding: 5px;
+}
+
+.inner_right h2{
+    color: rgb(124, 3, 3);
+}
+
+.expandable{
+    margin-top: 20px;
+}
+
+/* ************collapsible********************** */
+
+.collapsible {
+    background-color: rgb(151, 151, 151);
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  
+  
+  .collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+
+.collapsible i{
+    color:rgb(7, 7, 7);
+    font-size: large;
+}
+
+.btn6request{
+    background-color: #4CAF50; /* Green */
+    color:#4CAF50;
+    padding:3px 10px 3px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: black; 
+    border: 2px solid #fbfdfb;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.btn6request:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+textarea{
+    margin: 10px;
+    
+}
+
+span{
+  text-transform: capitalize;
+}
+
+
+/* ********************************************* */

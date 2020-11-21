@@ -6,11 +6,12 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    height: 650px;
+    height: 100vh;
     background-size: cover;
     background-image: url('../img/login4.jpg');
     background-repeat: no-repeat;
     background-position: left bottom;
+    background-attachment: fixed;
 }
 
 .image {

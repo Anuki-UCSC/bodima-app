@@ -78,11 +78,11 @@
                             </div>
                          </div>
                         </div>
-                    </div>
-                </form>
                     
-            </div>
+                </form>
+            </div>       
         </div>
+        
 
 
         <div class="pro_inner">
@@ -114,12 +114,11 @@
                             </div>
                          </div>
                         </div>
-                    </div>
-                </form>    
-            </div>
+                </form>   
+            </div> 
         </div>
-
-
+</div>
+</div>
 
 
 </div>

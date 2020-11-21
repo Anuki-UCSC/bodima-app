@@ -2,12 +2,13 @@
         require_once ('../models/reg_user.php');
         session_start(); 
 ?>
-<?php 
+<!-- <?php 
     if(isset($_GET['click']))
     {
         header('Location:../views/cart.php');
     }
-?>
+?> -->
+
 
 <?php
 
@@ -29,10 +30,10 @@ if(isset($_POST['add']))
           'item_quantity'=>$_POST['quantity']
       );
       $_SESSION['cart'][$count]=$item_array;
-      echo '<script>window.location="../views/cart.php?id='.$_POST['FSid'].'"</script>';
+      echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'"</script>';
     }else{
       echo '<script>alert("Product already added")</script>';
-      echo '<script>window.location="../views/cart.php?id='.$_POST['FSid'].'"</script>';
+      echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'"</script>';
     }
   }else{
     $item_array=array(
@@ -42,12 +43,11 @@ if(isset($_POST['add']))
       'item_quantity'=>$_POST['quantity']
   );
   $_SESSION['cart'][0]=$item_array;
-  echo '<script>window.location="../views/cart.php?id='.$_POST['FSid'].'"</script>';
+  echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'"</script>';
   }
 }else{
-  echo '<script>alert("Plase logging first")</script>';
   session_destroy();
-  header('Location:../views/user_loging.php');
+  header('Location:../views/user_loging.php?login');
 }
 }
 

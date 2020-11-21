@@ -31,3 +31,13 @@ function disBtn()
   document.getElementById('request').innerHTML="Pending";
   // window.location="../views/cartItem.php";
 }
+
+// cart item controller
+const cartBtn1=document.querySelectorAll('.block1');
+const cartBtn2=document.querySelectorAll('.block2');
+const cartBtn3=document.querySelectorAll('.block3');
+window.addEventListener('load',(e)=>{
+  let date=new date();
+  console.log(date.now());
+})
+console.log(cartBtn1);

@@ -13,6 +13,8 @@
     <title>Document</title>
 </head>
 <body>
+<div class="back-img">
+   <div class="back-image"> <img src="../resource/img/about-us1.jpg" alt=""></div>
 <?php include 'nav.php' ?>
 
     <div class="containe">
@@ -44,6 +46,7 @@
         </div>
     </div>
    <?php include 'footer.php' ?>
+</div>
 </body>
 <script src="../resource/js/home1.js"></script>
 <script src="../resource/js/jquery.js"></script>

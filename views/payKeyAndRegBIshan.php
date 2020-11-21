@@ -13,7 +13,7 @@
 	<div class="container">
 	<div class="para">
 			<h1><b>B</b>oarder <b>I</b>nformation</h1>
-			<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga doloremque sunt nam ipsam nihil quo quidem asperiores quisquam pariatur expedita ducimus, voluptatem nisi, dignissimos recusandae. </p>
+			<p>This is the last step! Hurry up and fill this form. Pay the advance(keymoney) to reserve this boarding place for you. </p>
 	</div>
 	<div class="register">
 	<!--<img src="img/new1.png" class="registerProfile">-->

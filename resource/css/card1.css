@@ -10,25 +10,47 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: fixed;
+  overflow-x: hidden;
 }
+.catogory{
+  margin-top: 30px;
+  padding: 0 30px;
+}
+
+.cato-header{
+  display: flex;
+}
+.cato-header img{
+  padding: 3px;
+  border-radius: 50%;
+  /* background-color: rgba(198, 198, 198, 0.722); */
+}
+
 .cart-wrapper{
+    
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
-    max-width: 300px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8); */
+    max-width: 380px;
     margin: auto;
     text-align: center;
-    background-color: rgb(238, 224, 31);
+    background-color: rgb(255, 255, 255);
   }
   .card img{
-      height: 200px;
+      height: 250px;
       width: 100%;
   }
   .cart-icon{
+    background-color: rgb(0, 201, 47);
+    position: fixed;
+    top: 150px;
+    right: 0px;
     padding: 10px;
      width: 120px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
   }
 
   .cart-icon a{
@@ -44,20 +66,45 @@ body{
 }
 
   .cart-wrap{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    background-color:#3A3E3E; 
-    color: white;
-    align-items: center;
+    width: 50%;
+    background-color:rgba(255, 255, 255, 0.913);; 
+    color: rgb(0, 0, 0);
+    height: 250px;
+    margin: 40px 0 70px 0;
   }
- 
-  
-  .cart-icon img{
-      height: 30px;
-      width: 30px;
+  .cart-wrap img{
+    position: absolute;
+    z-index: -1000;
+    filter: blur(3px);
+    /* -webkit-filter: blur(5px); */
+    height: 70vh;
+    width: 100vw;
+    top: 0;
+  }
+  .cart-wrap h1{
+    padding: 30px 0 0 30px;
+  }
+
+  .cart-wrap h3{
+    padding: 30px 0px 0px 30px;
+    color: rgb(50, 50, 50);
+    font-weight: lighter;
+  }
+  .rate{
+    display: flex;
+    float: right;
+    margin: 10px;
+    text-align: center;
+    align-items: center;
+    align-self: center;
     
   }
+  .rate h4{
+   text-align: center;
+
+   color:  rgb(255, 204, 0);
+  }
+ 
 
   .cartbox{
     padding:20px;
@@ -65,7 +112,7 @@ body{
   }
   
   .price {
-    color: grey;
+    color: rgb(0, 255, 72);
     font-size: 22px;
   }
   .card input{
@@ -77,15 +124,16 @@ body{
     outline: 0;
     padding: 12px;
     color: white;
-    background-color: #000;
+    /* background-color: rgb(41, 30, 30); */
     text-align: center;
     cursor: pointer;
     width: 100%;
     font-size: 18px;
+    color: black;
   }
   
   .card button:hover {
-    opacity: 0.7;
+    background-color: rgb(125, 255, 151);
   }
 
   
@@ -97,9 +145,16 @@ body{
       /* padding-top: 80px; */
       margin: 30px;
   }
-  
+  .mycart{
+    padding:0 10px;
+    height: 700px;
+    background-color: rgb(255, 255, 255);
+    overflow-y: scroll;
+    border-radius: 10px;
+  }
   .mycart h5{
       border-bottom: 1px solid gray;
+      width: 100%;
       font-size: 20px;
       font-weight: lighter;
       margin: 20px;
@@ -114,6 +169,17 @@ body{
   }
   .cart-item{
     display: flex;
+  }
+  .mycart-header{
+    display: flex;
+    align-items: center;
+  }
+  .mycart-header i{
+    color: rgba(36, 77, 40, 0.564);
+    cursor: pointer;
+  }
+  .mycart-header i:hover{
+    color: rgba(30, 30, 30, 0.722);
   }
 
   .cart-item button{
@@ -135,7 +201,7 @@ body{
   }
 
   .price-details{
-      height: 35%;
+      height: 55%;
       width: 60%;
       margin: 0 auto;
       margin-bottom: 20px;
@@ -151,7 +217,7 @@ body{
 
   .details{
     padding-top: 10px;
-    height: 150px;
+    min-height: 150px;
   }
 
   .details h5{
@@ -249,4 +315,18 @@ body{
   margin-top: 10px;
   width: 250px;
   cursor: pointer;
+}
+
+.details form input{
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+.details form input[type="text"]{
+  width: 100%;
+}
+
+.slide-nav-animate ul li{
+  font-weight: bold;
+  color: rgb(255, 255, 255);
 }
