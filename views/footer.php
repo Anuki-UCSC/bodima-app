@@ -4,7 +4,7 @@
     <div class="grid-items">
     <h3>Project Bodima</h3>
     <p style="color:  rgb(180, 180, 180) ;font-weight:400;font-size:16px">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi ab sed recusandae possimus adipisci nobis reiciendis dicta placeat? Eos.
+        bodima Accomadation Management System is multi facilitated platform form finding boarding places, advertising boarding places,<br/>advertising food delivery businesses<br/>and boarding places Managment.
     </p>
     </div>
     <div class="grid-items">

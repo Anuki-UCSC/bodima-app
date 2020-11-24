@@ -18,30 +18,30 @@ if(isset($_POST['submit'])){
 
     $resName=$_POST['resName'];
     if(empty($_POST['resName']) || strlen(trim($_POST['resName']))<1){
-        $errors[]='*Resturent Name is required';
+        $errors['err1']='*Resturent Name is required';
     }
 
 
     $address=$_POST['address'];
     if(empty($_POST['address']) || strlen(trim($_POST['address']))<1){
-        $errors[]='*Address is required';
+        $errors['err2']='*Address is required';
     }
 
     if(!isset($_POST['type'])){
-        $errors[]='*No Type were checked';
+        $errors['err3']='*Select one option';
     }
 
     if(!isset($_POST['otDeadline'])){
-        $errors[]='*No Ordering Time Deadline were checked';
+        $errors['err4']='*Select one Ordering Time Deadline';
     }
 
     $Lifespan=$_POST['Lifespan'];
     //print_r($_POST['Pcount']);
     
     if(empty($Lifespan) || strlen(trim($Lifespan))<1){
-        $errors[]='*Lifespan is required';
+        $errors['err5']='*Lifespan is required';
     }else if($Lifespan<30){
-        $errors[]='*Life must be greater than or equal 30';
+        $errors['err6']='*Should be greater than 30 days';
     } 
 
     if(empty($errors)){
@@ -52,7 +52,15 @@ if(isset($_POST['submit'])){
     
         $description=$_POST['description'];
 
+        // $image_name=$_FILES['BCimage']['name'];
+
         $image_name=$_FILES['BCimage']['name'];
+        if(null==trim($image_name)){
+            echo "null";
+            $image_name="defaultfp1.png";
+        }else{
+            echo " have value";
+        }
         $image_type=$_FILES['BCimage']['type'];
         $image_size=$_FILES['BCimage']['size'];
         $temp_name=$_FILES['BCimage']['tmp_name'];

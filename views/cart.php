@@ -60,7 +60,7 @@ if(isset($_GET['Pid']))
                      
                      <p>Some text about the item </p>
                      <input type="hidden" name="quantity" value="1">
-                     <input type="hidden" name="name" value="<?php echo $row['product_name'];?> ">
+                     <input type="hidden" name="item_name" value="<?php echo $row['product_name'];?> ">
                      <input style="color: green;" type="hidden" name="price" value="<?php echo $row['price'];?>">
                      <!-- <input type="hidden" name="FSid" value="<?php echo $row['FSid'];?>"> -->
                      <input type="hidden" name="Pid" value="<?php echo $fpid;?>">
@@ -98,7 +98,7 @@ if(isset($_GET['Pid']))
                      
                      <p>Some text about the item </p>
                      <input type="hidden" name="quantity" value="1">
-                     <input type="hidden" name="name" value="<?php echo $row['product_name'];?> ">
+                     <input type="hidden" name="item_name" value="<?php echo $row['product_name'];?> ">
                      <input style="color: green;" type="hidden" name="price" value="<?php echo $row['price'];?>">
                      <!-- <input type="hidden" name="FSid" value="<?php echo $row['FSid'];?>"> -->
                      <input type="hidden" name="Pid" value="<?php echo $fpid;?>">
@@ -136,7 +136,7 @@ if(isset($_GET['Pid']))
                      
                      <p>Some text about the item </p>
                      <input type="hidden" name="quantity" value="1">
-                     <input type="hidden" name="name" value="<?php echo $row['product_name'];?> ">
+                     <input type="hidden" name="item_name" value="<?php echo $row['product_name'];?> ">
                      <input style="color: green;" type="hidden" name="price" value="<?php echo $row['price'];?>">
                      <!-- <input type="hidden" name="FSid" value="<?php echo $row['FSid'];?>"> -->
                      <input type="hidden" name="Pid" value="<?php echo $fpid;?>">

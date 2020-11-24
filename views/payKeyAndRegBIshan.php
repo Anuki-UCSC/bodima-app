@@ -8,6 +8,8 @@
 	<title>Registration Form</title>
 	
 </head>
+
+
 <body class="body0">
 
 	<div class="container">
@@ -28,39 +30,65 @@
 	   }
 	 
 	 ?>
-		   <form action="../controller/regBIshan.php" method="post">
-		   	<p>What is Your University? </p>
-		   	<input type="text" name="first_name" placeholder="Are you Student? Enter University name.">
+		   <form action="../controller/regBIshan.php" method="post" enctype="multipart/form-data">
+		   	<p>What is Your Institute? </p>
+		   	<input type="text" name="university_name" placeholder="Are you Student? Enter Institute name.">
 
-		   	<p>Gender</p>
-		   	<input type="text" name="gender" placeholder="Enter Your Gender.">
+		  
 
             <p>Telephone</p>
 		   	<input type="text" name="telephone" placeholder="Enter Your Telephone Number.">
 
+		   	<p>Gender</p>
+		   	 <div class="radio">
+					<input type="radio" name="gender" value="Boy" checked="checked" id="3" >
+					<label  for="3">Boy</label>
+				</div>
+				
+				<div class="radio">
+					<input type="radio" name="gender" value="Girl" id="4">
+					<label for="4">Girl</label>
+				</div>
+
 		   	<p>Parent Name</p>
 			   <input type="text" name="p_name" placeholder="Enter Your Parent Name">
 			<p>Parent Telephone</p>
-			   <input type="text" name="email" placeholder="Enter Your Parent Telephone Number.">
+			   <input type="text" name="p_telephone" placeholder="Enter Your Parent Telephone Number.">
 
-			 <p>Upload Your Nic Images</p>
+
+
+
+			 <p>Upload Your NIC Images</p>
 			   <input type="file" name="nicImg">
 			
 
 			<p>Pay KeyMoney</p>
 			   <div class="radio">
-					<input type="radio" name="pay" value="hand" checked="checked" id="1">
-					<label  for="1">By Hand Over</label>
+					<input type="radio" name="pay" value="hand" checked="checked" id="1" onclick="cash()">
+					<label  for="1">Cash handover</label>
 				</div>
 				
 				<div class="radio">
-					<input type="radio" name="pay" value="online" id="2">
+					<input type="radio" name="pay" value="online" id="2"onclick="online()">
 					<label for="2">Pay Online</label>
 				</div>
-		   	<input type="submit" name="submit" >
+		   	<input type="submit" name="submit"  >
 		   </form>
 	</div>
 </div>
+<script type="text/javascript">
+	function cash()
+	{
+		alert("Are you want to select cash handover payment method.?");
+
+	}
+	function online()
+	{
+		alert("Are you want to select online payment method.?");
+
+	}
+	
+</script>
 <!-- <a  href="payment/payment.php">Pay Online</a> -->
 </body>
 </html>

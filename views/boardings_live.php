@@ -24,11 +24,11 @@
 				placeholder="Search by any key word" class="form-control" />
 			</div>
 
-			<div class="popup_signin">
+			<!-- <div class="popup_signin">
 				
 			<a href="../views/register.php">sign up here</a>
 			<span id="close">&times;</span>
-		</div>
+		</div> -->
 		
 			<div class="outer_result_block">
 				<div id="result"></div>
@@ -81,7 +81,9 @@ $(document).ready(function(){
 $('th').css({"backgroundColor":"black",
         "color":"white"});
 </script>
-
+<script src="../resource/js/jquery.js"></script>
+<script src="../resource/js/home1.js"></script>
+<script src="../resource/js/new_home.js"></script>
 
 </body>
 </html>

@@ -21,8 +21,24 @@ if(isset($_POST['accept']))
    $total=$_POST['total'];
    $first_name=$_POST['first_name'];
    $last_name=$_POST['last_name'];
-   $result=orderModel::accept($order_id,$connection);
-   // sentAccept($email,$first_name,$address,$total);
+   $method=$_POST['method'];
+   if($method=='card')
+   {
+      $result=orderModel::accept($order_id,1,$connection);
+      sentAccept($email,$first_name,$address,$total);
+      header('Location:../views/notPaymentOrder.php');
+   }elseif($method=="cash")
+   {
+      $result=orderModel::accept($order_id,3,$connection);
+      header('Location:../views/deliveringOrder.php');
+   }
+   
+}
+
+if(isset($_POST['remove']))
+{
+   $order_id=$_POST['order_id'];
+   $result=orderModel::remove($order_id,$connection);
    header('Location:../views/orders.php');
 }
 ?>

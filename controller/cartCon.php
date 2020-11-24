@@ -25,25 +25,27 @@ if(isset($_POST['add']))
       $count=count($_SESSION['cart']);
       $item_array=array(
           'product_id'=>$_GET['id'],
-          'item_name' =>$_POST['name'],
+          'item_name' =>$_POST['item_name'],
+          'restaurant'=>$_POST['name'],
           'product_price'=>$_POST['price'],
           'item_quantity'=>$_POST['quantity']
       );
       $_SESSION['cart'][$count]=$item_array;
-      echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'"</script>';
+      echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'&restaurant='.$_POST['restaurant'].'"</script>';
     }else{
       echo '<script>alert("Product already added")</script>';
-      echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'"</script>';
+      echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'&restaurant='.$_POST['restaurant'].'"</script>';
     }
   }else{
     $item_array=array(
       'product_id'=>$_GET['id'],
-      'item_name' =>$_POST['name'],
+      'item_name' =>$_POST['item_name'],
       'product_price'=>$_POST['price'],
+      'restaurant'=>$_POST['name'],
       'item_quantity'=>$_POST['quantity']
   );
   $_SESSION['cart'][0]=$item_array;
-  echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'"</script>';
+  echo '<script>window.location="../views/cart.php?Pid='.$_POST['Pid'].'&name='.$_POST['name'].'&address='.$_POST['address'].'&restaurant='.$_POST['restaurant'].'"</script>';
   }
 }else{
   session_destroy();

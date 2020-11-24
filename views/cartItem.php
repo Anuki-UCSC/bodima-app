@@ -115,8 +115,17 @@ $total=0;
                 <input type="hidden" name="Pid" value="<?php echo $_GET['Pid'];?>">
                 <input type="text" placeholder="ex:310/delgasduwa/dodanduwa" name="address"  ?>
                 <h4>Enter phone number :</h4>
-                <?php if(isset($_GET['errorPhone'])) echo "<h5 style='color:red'>*Please enter the delivery address</h5>"; ?>
+                <?php if(isset($_GET['errorPhone'])) echo "<h5 style='color:red'>*Please enter the phone number</h5>"; ?>
                 <input type="text" placeholder="ex:07x xxx xxx xxxx" name="phone"  ?>
+                <h4>Select the payment method :</h4>
+                <div class="payment_method">
+                    <input type="radio" id="1" name="method" value="card" checked>
+                    <label for="1">Card</label>
+                </div>
+                <div class="payment_method">
+                    <input type="radio" id="2" name="method" value="cash">
+                    <label for="2">Cash</label>
+                </div>
                 <button name="submit" type="submit" id="request" class="btn6 request">Request </button>
             </form>
            

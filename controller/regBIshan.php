@@ -9,33 +9,130 @@
 if(isset($_POST['submit']))
 {
  $errors=array();            //create empty array
-        if(!isset($_POST['gender']) || strlen(trim($_POST['gender']))<1)   //check if the username and password has been entered
-                {
-                 $errors[]='*Your Gender is required';
-                }
+
+ 
+
+
+
+        if(!isset($_POST['university_name']) || strlen(trim($_POST['university_name']))<1)   
+        {
+            $errors[]='*University Name is required';
+        }
+        // elseif(!preg_match(("/^([a-zA-Z']+)$/"), $university_name)){ // preg_match -> check regular expression
+        //         $errors[]='*Invalid University name ';
+        // }
+
+
+        if(!isset($_POST['gender']))   
+        {
+            $errors[]='*Your Gender is required';
+        }
+         if(!isset($_POST['pay']))   
+        {
+            $errors[]='*Payment Method is required';
+        }
+        //  elseif(!preg_match(("/^([a-zA-Z']+)$/"), $gender)){ // preg_match -> check regular expression
+        //         $errors[]='*Invalid first name ';
+        // }
         if(!isset($_POST['telephone']) || strlen(trim($_POST['telephone']))<1)
                 {
                  $errors[]='*Telephone Number is required';
                 }
-
-
-
-        if(!isset($_POST['nicImg']) || strlen(trim($_POST['nicImg']))<1)
+        if(!isset($_POST['p_name']) || strlen(trim($_POST['p_name']))<1)
+        {
+                $errors[]='*Parent Name is required';
+        }
+        //  elseif(!preg_match(("/^([a-zA-Z']+)$/"), $p_name)){ // preg_match -> check regular expression
+        //         $errors[]='*Invalid parent name ';
+        // }
+        if(!isset($_POST['p_telephone']) || strlen(trim($_POST['p_telephone']))<1)
                 {
-                 $errors[]='*Your NIC Image is required.Please Uploaded.';
-                }
+                 $errors[]='*Parent Telephone Number is required';
+                }       
+
+
+         // if(!isset($_POST['nicImg']) )
+         //         {
+         //        $errors[]='*Your NIC Image is required.Please Uploaded.';
+         //        }
        
        
         
 
-        if(!isset($_POST['p_name']) || strlen(trim($_POST['p_name']))<1)
-                {
-                $errors[]='*Parent Name is required';
-               }
+      
         
 
         if(empty($errors))
         {
+            $university_name=mysqli_real_escape_string($connection,$_POST['university_name']);
+
+             $gender=mysqli_real_escape_string($connection,$_POST['gender']);
+
+             $telephone=mysqli_real_escape_string($connection,$_POST['telephone']);
+
+             $p_name=mysqli_real_escape_string($connection,$_POST['p_name']);
+             $p_telephone=mysqli_real_escape_string($connection,$_POST['p_telephone']);
+             $payment_method=mysqli_real_escape_string($connection,$_POST['pay']);
+
+            ///upload image file
+
+             $file_name=$_FILES['nicImg']['name'];
+             $file_type=$_FILES['nicImg']['type'];
+             $file_size=$_FILES['nicImg']['size'];
+             $temp_name=$_FILES['nicImg']['tmp_name'];
+
+             $upload_to="../resource/nicImage/";
+             move_uploaded_file($temp_name,$upload_to . $file_name);
+
+             $st_email=$_SESSION['email'];
+
+
+             $result=reg_userIshan::selectStToBoarder($st_email,$connection);
+
+            $user=mysqli_fetch_assoc($result);
+
+            $password=$user['password'];
+            $token=$user['token'];
+            $first_name=$user['first_name'];
+            $last_name=$user['last_name'];
+            $level="boarder";
+            $nic=$user['nic'];
+            $keymoney=$user['keymoney'];
+            $BOid=$user['BOid'];
+            $B_post_id=$user['B_post_id'];
+
+
+            ////payhere variable
+
+
+
+
+
+
+
+
+            reg_userIshan::insertBorder($connection,$st_email,$password,$token,$first_name,$last_name,$level,$nic,$file_name,$upload_to,$university_name,$gender,$telephone);
+
+
+
+              $data=reg_userIshan::selectBorderid($connection,$st_email);
+
+             
+             
+
+
+            reg_userIshan::insertBorderparent($connection,$data,$p_name,$p_telephone);
+
+            reg_userIshan::insertConfirmRent($connection,$data,$BOid,$B_post_id,$keymoney,$payment_method);
+
+
+
+
+
+
+
+
+
                 // $user_email=reg_user::checkUser($_POST['email'],$connection);
                 // $email_arr=mysqli_fetch_assoc($user_email);  
                 // if(empty($email_arr))
@@ -48,17 +145,17 @@ if(isset($_POST['submit']))
 
                 if($_POST['pay']=="hand")
                 {
-                        header('Location:../views/myrequests.php');
+                        header('Location:../views/rentedPayNotIshan.php');
                 }
                 elseif($_POST['pay']=="online")
                 {
-                        header('Location:../views/payKeyMIshan.php');
+                        header('Location:../views/payKeyMIshan.php?B_post_id='.$B_post_id);
                 }
               
                 }
                 else{
-                        $errors[]='*Entered email alredy used ';
-                        header('Location:../views/register.php?'.http_build_query(array('param'=>$errors)));
+                        
+                        header('Location:../views/payKeyAndRegBIshan.php?'.http_build_query(array('param'=>$errors)));
                 }
                 
         }
@@ -68,124 +165,6 @@ if(isset($_POST['submit']))
         }
 
 
-
-        // check the click food_supplier and boarding owner register button and validation
-if(isset($_POST['register']) )
-{
-                $errors=array();
-                $password=mysqli_real_escape_string($connection,$_POST['password']);
-                $confirmPassword=mysqli_real_escape_string($connection,$_POST['confirmpassword']);
-                 $address=mysqli_real_escape_string($connection,$_POST['address']);
-                 $link=mysqli_real_escape_string($connection,$_POST['link']);
-
-                if(!isset($address) || strlen(trim($address))<1)
-                {
-                 $errors[]='*Address required';
-                }
-                if(!isset($link) || strlen(trim($link))<1)
-                {
-                 $errors[]='*Location Link required';
-                }
-                if(empty($password || $confirmPassword))                // validation of new password
-                {
-                    $errors[]="*Password requried";
-                }
-                elseif((strlen(trim($password))<6))
-                {
-                    $errors[]="*Minimum is 6 charactor ";
-                }
-
-                elseif($password != $confirmPassword)
-                {
-                    $errors[]="*Passwords do not match";
-                }
-              
-                if(empty($errors))
-                {
-
-                        $token= bin2hex(random_bytes(50));
-                        $email=$_SESSION['email'];
-                        $first_name=$_SESSION['first_name'];
-                        $last_name=$_SESSION['last_name'];
-                        $nic=$_SESSION['nic'];
-                        $level=$_SESSION['level'];
-                        $hash=sha1($password);
-                        unset($_SESSION['email']);
-                        unset($_SESSION['first_name']);
-                        unset($_SESSION['last_name']);
-                        unset($_SESSION['nic']);
-                        unset($_SESSION['level']);
-                        session_destroy();
-                        reg_user::userReg($email,$first_name,$last_name,$nic,$hash,$token,$level,$address,$link,$connection);
-                        sendRegUser($email,$token,$level);
-                        header('Location:../views/emailVerify.php?email='.$email.'&token='.$token.'&level='.$level);  
-
-                }else{
-                        if($level=='boardings_owner'){header('Location:../views/boardings_owner_reg.php?'.http_build_query(array('param'=>$errors)));}
-                        else   header('Location:../views/food_supplier_reg.php?'.http_build_query(array('param'=>$errors)));
-                }
-        
- }
- //resend
-if(isset($_POST['resend']))
-{
-        sendRegUser($_POST['email'],$_POST['token'],$_POST['level']);
-        header('Location:../views/emailVerify.php?resend&email='.$_POST['email'].'&token='.$_POST['token'].'&level='.$_POST['level']);  
-}
-
-      // check email details and save database 
-if(isset($_GET['token']) && isset($_GET['email']) && isset($_GET['level']))
-        {
-                $email=$_GET['email'];
-                $level=$_GET['level'];
-                $token=$_GET['token'];
-                
-                $result=reg_user::getUser($level,$token,$email,$connection);
-                if($result)
-                {
-                       if(mysqli_num_rows($result)==1)
-                       {
-                        $newtoken= bin2hex(random_bytes(50));
-                        $accept=reg_user::setApt($email,$level,$newtoken,$connection);
-                                if($accept)
-                                {
-                                        $records=mysqli_fetch_assoc($result);
-                                        $_SESSION['email']=$records['email'];
-                                        $_SESSION['first_name']=$records['first_name'];
-                                        $_SESSION['last_name']=$records['last_name'];
-                                        $_SESSION['level']=$records['level'];
-                                                if($records['level']=="student")
-                                                {
-                                                        $_SESSION['Reg_id']=$records['Reg_id'];
-                                                        // $_SESSION['address']=$records['address'];
-                                                        header('Location:../views/welcome.php');
-                                                }
-                                                elseif($records['level']=="boardings_owner")
-                                                {
-                                                        $_SESSION['BOid']=$records['BOid'];
-                                                        $_SESSION['address']=$records['address'];
-                                                        header('Location:../views/welcome.php');
-                                                }
-                                                elseif($records['level']=="food_supplier") 
-                                                {
-                                                        $_SESSION['FSid']=$records['FSid'];
-                                                        $_SESSION['address']=$records['address'];
-                                                        header('Location:../views/welcome.php');
-                                                }
-                                }
-                                else
-                                {
-                                        header('Location:../views/expired.php');
-                                }
-                        }else
-                        {
-                                header('Location:../views/expired.php');
-                        }
-                }else
-                {
-                        header('Location:../views/expired.php');
-                }
-        }
 
 
 

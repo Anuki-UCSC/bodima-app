@@ -2,7 +2,7 @@
         <div class="header">
             <div class="logo">
                  <img src="../resource/img/logo.png" alt="">
-                <h1><small style="font-size: 14px; color:black;">   Solution for many problem</small></h1>
+                <h1><small style="font-size: 14px; color:white;">   Solution for many problems</small></h1>
             </div>
             <div class="sign">
                 
@@ -47,8 +47,8 @@
                     </div>
             <ul class="nav_bar">
                 <li class="nav_item " onclick="window.location='../index.php'"><i class=" fa fa-home"></i>Home</li>
-                <li class="nav_item " onclick="window.location='boardings.php'"><i class="fa fa-bed"></i> Boardings</li>
-                <li class="nav_item " onclick="window.location='foodposts.php'"><i class="fas fa-hamburger"></i> Order Foods</li>
+                <li class="nav_item " onclick="window.location='boardings_live.php'"><i class="fa fa-bed"></i> Boardings</li>
+                <li class="nav_item " onclick="window.location='foodposts.php'"><i class="fas fa-hamburger"></i> Order Food</li>
                 <li class="nav_item " onclick="window.location='about.php'"><i class="fa fa-address-card"></i> About us</li>
                 <li class="nav_item " onclick="window.location='contact_us.php'"><i class="fa fa-address-book"></i> Contact Us</li>
             </ul>
@@ -60,11 +60,18 @@
                     <li>Chat</li>
                     <?php if($_SESSION['level']=='food_supplier'){?>
                         <li onclick='window.location="orders.php"'>Orders </li>
+                        
                        
                    <?php } ?>
                     <?php if($_SESSION['level']=='boardings_owner'){?>
                         <li onclick='window.location="ConBODealIshan.php"'>Confirm Deal </li>
                         <li onclick='window.location="TBOReqIshan.php"'>Request</li>
+                   <?php } ?>
+
+                   <?php if($_SESSION['level']=='student'){?>
+                      <li onclick='window.location="../views/pendingReqIshan.php"'>Boarding Request </li>
+                      <li onclick='window.location="../views/requests_list_A.php"'>PendinRequest </li>
+                      
                    <?php } ?>
                    <?php if($_SESSION['level']=='boardings_owner' || $_SESSION['level']=='boarder'){?>
                     <li onclick='window.location="paymentFood_pending.php"'>My food Orders</li>

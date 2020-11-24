@@ -17,19 +17,17 @@
 <div class="header">
             <div class="logo">
                  <img src="../resource/img/logo.png" alt="">
-                <h1><small style="font-size: 14px; color:black;">   Solution for many problem</small></h1>
+                <h1><small style="font-size: 14px; color:white;">   Solution for many problems</small></h1>
             </div>
             <div class="sign">
-                <?php if(!isset($_SESSION['email'])){echo '<a href="../controller/logingController.php?click1">Sign In <i class="fa fa-sign-in-alt"></i></a>';}?>
                 <?php if(isset($_SESSION['email'])){ 
-                    if($_SESSION['level']=='administrator'){echo '<a href="../controller/adminPanelCon.php?admin"> Dash Board &nbsp</a>'; }
                     ?>
 
                     <div class="notification">
-                        <i class="fa fa-bell"></i>
+                        <i class="fa fa-bell fa-lg"></i>
                         <div class="notification-box" >
                             <ul>
-                                <li><i class="fas fa-times"></i></li>
+                                <li><i class="fas fa-times fa-2x"></i></li>
                                 <a href="#"><li>You have notification</li></a>
                                 <a href="#"><li>You have notification</li></a>
                                 <a href="#"><li>You have notification</li></a>
@@ -38,24 +36,24 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="profile"><a href="profilepage.php"> <i  class="fa fa-user-circle"></a></i></div>
+                    <div class="profile"><a href="profilepage.php"> <i  class="fa fa-user-circle fa-lg"></a></i></div>
                 <?php
-                    echo '<div class="user">Hi '.$_SESSION['first_name'].'</div>'; 
-                    echo '<a href="../controller/logoutController.php">Sign out <i class="fa fa-sign-out-alt"></i></a>';}
-                ?> 
+                    echo '<div class="user"><h4>Welcome '.$_SESSION['first_name'].'</h4></div>'; ?>
+                    <button onclick="window.location='../controller/logoutController.php'">Sign out <i class="fa fa-sign-out-alt"></i></button>
+                <?php } ?>
                 
             </div>
         </div>
     <div class="container">
         <div class="content">
           <div class="payment-slide">
-              <ul>
-                  <li onclick="window.location='../index.php'">Home page</li>
-                  <li onclick="window.location='paymentFood_pending.php'">Pending Orders</li>
-                  <li onclick="window.location='paymentFood_accept.php'">Accepted Orders</li>
-                  <li onclick="window.location='paymentFood_receving.php'">Receiving Order</li>
-                  <li onclick="window.location='paymentFood_history.php'">Order History</li>
-                  <li onclick="window.location='foodposts.php'">New Order</li>
+          <ul>
+                   <li  onclick="window.location='../index.php'"><i class="fas fa-external-link-alt"></i> Home page</li>
+                  <li onclick="window.location='paymentFood_pending.php'"><i  class="fas fa-hourglass-half"></i> Pending Orders</li>
+                  <li onclick="window.location='paymentFood_accept.php'"><i  class="fas fa-clipboard-check"></i> Accepted Orders</li>
+                  <li onclick="window.location='paymentFood_receving.php'"><i  class="fas fa-truck"></i> Receiving Order</li>
+                  <li onclick="window.location='paymentFood_history.php'"><i class="fas fa-history"></i> Order History</li>
+                  <li onclick="window.location='foodposts.php'"><i  class="fas fa-plus"></i> New Order</li>
               </ul>
           </div>          
        
@@ -79,16 +77,9 @@
                     $i++;
                 }
                 $total='';
+                $i=1;
                 foreach($ids as $id){
-                foreach($data_rows as $data_row)
-                {
-                    if($data_row['order_id']==$id)
-                    {
-                        $total=$data_row['total'];
-                        // echo $total;
-                    }
-                        
-                }
+                  
                 ?>
                 <div class="box">
                     <div class="resend wait">
@@ -98,11 +89,28 @@
                   <div class="details-box">
                     <div class="details">
                             <h2>Order Id :<span style="color:sienna;"><?php echo $id; ?></h2>
-                            <h4>Pay amount :<?php echo $total; ?></h4>
+                            <h4 class="order_item"><i class="fas fa-caret-right"></i> Order Item :</h4>
+                            <?php 
+                                  foreach($data_rows as $data_row)
+                                  {
+                                      if($data_row['order_id']==$id)
+                                      {
+                                          $total=$data_row['total'];
+                                          $time=$data_row['time'];
+                                          $restaurant=$data_row['restaurant'];
+                                          echo '<div class="product_item"><h5 class="item">'.$i++.'.'.$data_row['product_name'].'</h5>';
+                                          echo '<h5 class="quantity">Quantity :'.$data_row['quantity'].'</h5></div>';
+                                      }
+                                          
+                                  }
+                                  $i=1;
+                            ?>
+                            <h4 class="order_item"><i class="fas fa-caret-right"></i> Pay amount :<span style="color: red;"> RS <?php echo $total; ?></span></h4>
                         </div>
                         <div class="button-pay">
-                            
-                            <h4>If you want cancel order. click the cancel order</h4>
+                            <h4 class="order_item"><i class="fas fa-caret-right"></i> Ordered time : <span style="color: sienna;"><?php echo $time ?></span> </h4>
+                            <h4 class="order_item"><i class="fas fa-caret-right"></i> Resturent  : <span style="color: sienna;"><?php echo $restaurant ?></span> </h4>
+                            <h4 class="order_item" style="margin-top: 5px;border-top: 2px solid rgb(176, 175, 177);font-weight:lighter"><i class="fas fa-window-close"></i> If you want cancel order. click the cancel order</h4>
                             <button onclick='if(confirm("Are you want to cancel this Order ?")) window.location="../controller/orderCon.php?orderDelete_id=<?php echo $id; ?>"' type="button" class="btn1 cancel"> Cancel Order</button>
                         </div>
                   </div>
@@ -115,7 +123,7 @@
                
             </div>
         </div>
-        <div class="more-details">
+        <!-- <div class="more-details">
                     <div class="more">
                         <h2>Order Details</h2>
                         <h3>Order Id : <span style="color: sienna;">1245685625</span></h3>
@@ -128,7 +136,7 @@
                             <li>3. fyed rice</li>
                         </ul>
                     </div>
-        </div>
+        </div> -->
         </div>
     </div>
     <!-- <?php include 'footer.php'?> -->

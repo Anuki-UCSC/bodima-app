@@ -17,19 +17,18 @@
 <div class="header">
             <div class="logo">
                  <img src="../resource/img/logo.png" alt="">
-                <h1><small style="font-size: 14px; color:black;">   Solution for many problem</small></h1>
+                <h1><small style="font-size: 14px; color:black;">   Solution for many problems</small></h1>
             </div>
             <div class="sign">
-                <?php if(!isset($_SESSION['email'])){echo '<a href="../controller/logingController.php?click1">Sign In <i class="fa fa-sign-in-alt"></i></a>';}?>
                 <?php if(isset($_SESSION['email'])){ 
-                    if($_SESSION['level']=='administrator'){echo '<a href="../controller/adminPanelCon.php?admin"> Dash Board &nbsp</a>'; }
+                   
                     ?>
 
                     <div class="notification">
-                        <i class="fa fa-bell"></i>
+                        <i class="fa fa-bell fa-lg"></i>
                         <div class="notification-box" >
                             <ul>
-                                <li><i class="fas fa-times"></i></li>
+                                <li><i class="fas fa-times fa-2x"></i></li>
                                 <a href="#"><li>You have notification</li></a>
                                 <a href="#"><li>You have notification</li></a>
                                 <a href="#"><li>You have notification</li></a>
@@ -38,21 +37,22 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="profile"><a href="profilepage.php"> <i  class="fa fa-user-circle"></a></i></div>
+                    <div class="profile"><a href="profilepage.php"> <i  class="fa fa-user-circle fa-lg"></a></i></div>
                 <?php
-                    echo '<div class="user">Hi '.$_SESSION['first_name'].'</div>'; 
-                    echo '<a href="../controller/logoutController.php">Sign out <i class="fa fa-sign-out-alt"></i></a>';}
-                ?> 
-                
+                  echo '<div class="user"><h4>Welcome '.$_SESSION['first_name'].'</h4></div>'; ?>
+                 <button onclick="window.location='../controller/logoutController.php'">Sign out <i class="fa fa-sign-out-alt"></i></button>
+                <?php } ?>
             </div>
         </div>
     <div class="container">
         <div class="content">
           <div class="payment-slide">
               <ul>
-                  <li onclick="window.location='../index.php'">Home page</li>
-                  <li onclick="window.location='orders.php'">New Orders</li>
-                  <li onclick="window.location='#'">Delivered Orders</li>
+                  <li onclick="window.location='../index.php'"><i class="fas fa-external-link-alt"></i> Home page</li>
+                  <li onclick="window.location='orders.php'"><i class="fas fa-sort-amount-down-alt"></i> New Orders</li>
+                  <li onclick="window.location='notPaymentOrder.php'"><i  class="far fa-credit-card"></i> Card Payment</li>
+                  <li onclick="window.location='deliveringOrder.php'"><i class="fas fa-truck"></i> Delivering Orders</li>
+                  <li onclick="window.location='deliveredHistory.php'"><i class="fas fa-history"></i> Deliverd History</li>
                
               </ul>
           </div>          
@@ -65,44 +65,52 @@
                 $F_post_id_set=array();
                 while($row=mysqli_fetch_assoc($F_post_id))
                 {
-                    $getOrder_id=orderModel::getOrderIDFoodSupplier($connection,$row['F_post_id']);
+                    $getOrder_id=orderModel::getOrderIDFoodSupplier($connection,$row['F_post_id'],0);
                     while($record=mysqli_fetch_assoc($getOrder_id))
                     {?>
-                     <form action="../controller/orderAcptCon.php" method="post">
+                     <form action="../controller/orderAcptCon.php" onsubmit="" method="post">
                      <div class="box order">
                             <div class="resend">
-                                    <div class="right"><i class="fa fa-check fa-2x"></i></div>
-                                    <div class="letter"><h4>Your order is accepted </h4></div>
+                                    <div class="right"><i class="fas fa-sort-amount-down-alt fa-2x"></i></div>
+                                    <div class="letter"><h4>Your have a order </h4></div>
                             </div>
                             <div class="details-box">
                                     <div class="details">
                                         <h2>Order Id :<span style="color:sienna;"><?php echo $record['order_id']; ?></h2>
-                     <?php   $getOrder=orderModel::getOrderFoodSupplier($connection,$record['order_id']);
+                                        <h4 class="order_item"><i class="fas fa-caret-right"></i> Order item:</h4>
+                     <?php   $getOrder=orderModel::getOrderFoodSupplier($connection,$record['order_id'],0);
                         while($result=mysqli_fetch_assoc($getOrder))
                         {
-                            echo '<div class="product-details"><h5>'.$result['product_name'].'</h5>';
-                            echo '<h5>Quantity :'.$result['quantity'].'</span></h5></div>';
+                            echo '<div class="product_item"><h5  class="item">'.$result['product_name'].'</h5>';
+                            echo '<h5 class="quantity">Quantity :'.$result['quantity'].'</span></h5></div>';
                             $address=$result['address'];
                             $email=$result['email'];
                             $first_name=$result['first_name'];
                             $last_name=$result['last_name'];
                             $total=$result['total'];
+                            $phone=$result['phone'];
+                            $method=$result['method'];
                            
                         }?>
             
-                                        <h4>Pay amount :<?php echo $total; ?></h4>
+                                        <h4 class="order_item"><i class="fas fa-caret-right"></i> Pay amount :  <span style="color: red;"> RS <?php echo $total; ?></span></h4>
                                         
                                     </div>
                                 <div class="button-pay">
-                                <h3>Select Please confirm the Order</h3>
+                                <h4 class="order_item"><i class="fas fa-caret-right"></i> Customer Name : <span style="color: sienna;"><?php echo $first_name; ?></span></h4>
+                                <h4 class="order_item"><i class="fas fa-caret-right"></i> Delivery address :<span style="color: sienna;"><?php echo $address; ?></span></h4>
+                                <h4 class="order_item"><i class="fas fa-caret-right"></i> Phone number :<span style="color: sienna;"><?php echo $phone; ?></span></h4>
+                                <h4 class="order_item"><i class="fas fa-caret-right"></i> Customer will pay for this order in : <span style="color: red;"><?php echo $method; ?></span></h4>
+                                <h4 class="order_item" style="border-top: 2px solid rgb(176, 175, 177);font-weight:lighter"><i class="fas fa-check-square"></i> Please accept the Order</h4>
                                 <input type="hidden" name='order_id' value="<?php echo $record['order_id']; ?>">
                                 <input type="hidden" name='total' value="<?php echo $total; ?>">
                                 <input type="hidden" name='address' value="<?php echo $address; ?>">
                                 <input type="hidden" name='email' value="<?php echo $email; ?>">
                                 <input type="hidden" name='first_name' value="<?php echo $first_name; ?>">
                                 <input type="hidden" name='last_name' value="<?php echo $last_name; ?>">
+                                <input type="hidden" name='method' value="<?php echo $method; ?>">
                                 <button class="btn-rate" name="accept" type="submit">Accept</button>
-                                <button class="cancel-rate" name="remove" type="submit">cancel</button>
+                                <button class="cancel-rate" name="remove"  type="submit">cancel</button>
                             </div>
                             </div>
                     
@@ -111,20 +119,6 @@
                 <?php    }
                 } ?>                
             </div>
-        </div>
-        <div class="more-details">
-                    <div class="more">
-                        <h2>Order Details</h2>
-                        <h3>Order Id : <span style="color: sienna;">1245685625</span></h3>
-                        <h4>Payed amout :123.15</h4>
-                        <h4>Order Date :2020 / 04 /21</h4>
-                        <h4>Order item :</h4>
-                        <ul>
-                            <li>1. rice</li>
-                            <li>2. kotthu</li>
-                            <li>3. fyed rice</li>
-                        </ul>
-                    </div>
         </div>
         </div>
     </div>

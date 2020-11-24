@@ -28,12 +28,15 @@ $errors=array();
        $products=$_SESSION['cart'];
        $order_id=time().mt_rand($email);
        $total=$_SESSION['total'];
+       $phone=$_POST['phone'];
+       $method=$_POST['method'];
+       date_default_timezone_set("Asia/Colombo");
+       $time=date("h:i:sa");
        $_SESSION['order_id']=$order_id;  
        foreach($products as $product)
        {
-        orderModel::food_request($F_post_id,$email,$address,$first_name,$last_name,$product['item_name'],$product['item_quantity'],$order_id,$total,$connection);
+        orderModel::food_request($F_post_id,$email,$address,$first_name,$last_name,$product['item_name'],$product['item_quantity'],$order_id,$total,$phone,$method,$time,$product['restaurant'],$connection);
        }
-      //  $_SESSION['isdisable']=1;
       header('Location:../views/paymentFood_pending.php');
    }
 }else{
@@ -53,9 +56,23 @@ if(isset($_GET['orderDelete_id'])){
 }
 if(isset($_GET['orderConfirm_id'])){
    $order_id=$_GET['orderConfirm_id'];
-   $result=orderModel::requestOrderConfirm($connection,$order_id);
+   date_default_timezone_set("Asia/Colombo");
+    $deliveredTime=date("h:i:sa");
+   $result=orderModel::requestOrderConfirm($connection,$deliveredTime,$order_id);
    if($result){
       header('Location:../views/paymentFood_history.php?success&order_id='.$order_id);
+   }
+   {
+      echo "Mysqli query failed";
+   }
+}
+if(isset($_GET['orderConfirmFS_id'])){
+   $order_id=$_GET['orderConfirmFS_id'];
+   date_default_timezone_set("Asia/Colombo");
+    $deliveredTime=date("h:i:sa");
+   $result=orderModel::requestOrderConfirm($connection,$deliveredTime,$order_id);
+   if($result){
+      header('Location:../views/deliveredHistory.php');
    }
    {
       echo "Mysqli query failed";

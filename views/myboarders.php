@@ -1,6 +1,7 @@
 <?php 
  require_once ('../config/database.php');
  require_once ('../models/profile_model.php');
+ require_once ('../models/reg_userIshan.php');
 
 session_start();
 
@@ -26,7 +27,7 @@ session_start();
     	
     	<div class="header">
             <div class="logo">
-                <h1><b style="color: rgb(13, 13, 189)">B</b>odima<small style="font-size: 14px; color:rgb(13, 13, 189);">   Solution for many problem</small></h1>
+                <h1><b style="color: rgb(13, 13, 189)">B</b>odima<small style="font-size: 14px; color:rgb(13, 13, 189);">   Solution for many problems</small></h1>
             </div>
             <div class="sign">
                 <?php if(!isset($_SESSION['email'])){echo '<a href="controller/logingController.php?click1">Sign In <i class="fa fa-sign-in"></i></a>';}?>
@@ -36,7 +37,7 @@ session_start();
                     <div class="profile"><a href="views/profile.php"> <i  class="fa fa-user-circle"></a></i></div>
                 <?php
                     echo '<div class="user">Hi '.$_SESSION['first_name'].'</div>'; 
-                    echo '<a href="controller/logoutController.php">Sign out <i class="fa fa-sign-out"></i></a>';}
+                    echo '<a href="../controller/logoutController.php">Sign out <i class="fa fa-sign-out"></i></a>';}
                 ?> 
                 
             </div>
@@ -47,16 +48,7 @@ session_start();
 
 
 
-<?php
- $level=$_SESSION['level'];
- $first_name=$_SESSION['first_name'];
- $last_name=$_SESSION['last_name'];
- $email=$_SESSION['email'];
- $address=$_SESSION['address'];
- $BOid=$_SESSION['BOid'];
 
-
-?>
 
   <div class="content_template">
     <div class="content_container">
@@ -72,56 +64,47 @@ session_start();
                         <th>PostNo</th>
                         <th>Remove</th>
                     </tr>
+                    <?php  
+                    //$level=$_SESSION['level'];
+                    //$first_name=$_SESSION['first_name'];
+                   // $last_name=$_SESSION['last_name'];
+                   //  $email=$_SESSION['email'];
+                    // $address=$_SESSION['address'];
+                     $BOid=$_SESSION['BOid'];
+
+                    $result=reg_userIshan::selectMyBorders($connection,$BOid);
+
+                     
+                       $i=0;
+                     while ($user=mysqli_fetch_assoc($result)) {
+                        $i++;
+                          $first_name=$user['first_name'];
+                          $last_name=$user['last_name'];
+                          $nic=$user['nic'];
+                         $house_num=$user['house_num'];
+                           $lane=$user['lane'];
+                            $city=$user['city'];
+                             $B_post_id=$user['B_post_id'];
+                          
+                     
+
+
+
+ ?>
             
                     <tr>
-                        <td class="regno">1<img src="../resource/Images/profile_img2.jpg"></td>
-                        <td>Wimala</td>
-                        <td>Perera</td>
-                        <td>954321112v</td>
-                        <td>44, mal mawatha, mattegoda</td>
-                        <td>1</td>
+                        <td class="regno"><?php echo $i; ?><img src="../resource/Images/profile_img2.jpg"></td>
+                        <td><?php echo $first_name; ?></td>
+                        <td><?php echo $last_name; ?></td>
+                        <td><?php echo $nic; ?></td>
+                        <td><?php echo $house_num.", ".$lane.", ".$city; ?></td>
+                        <td><?php echo $B_post_id; ?></td>
                         <td class="red">delete</td>
                     </tr>
+                <?php } ?>
 
-                    <tr>
-                        <td class="regno">2<img src="../resource/Images/profile_img2.jpg"></td>
-                        <td>Diyana</td>
-                        <td>Fernando</td>
-                        <td>922221006v</td>
-                        <td>16, Araliya uyana, Kottawa</td>
-                        <td>3</td>
-                        <td class="red">delete</td>
-                    </tr>
-
-                    <tr>
-                        <td class="regno">3<img src="../resource/Images/profile_img2.jpg"></td>
-                        <td>Ramya</td>
-                        <td>Rajapaksha</td>
-                        <td>966661788v</td>
-                        <td>Darmapala mawatha,Thummulla</td>
-                        <td>2</td>
-                        <td class="red">delete</td>
-                    </tr>
-
-                    <tr>
-                        <td class="regno">4<img src="../resource/Images/profile_img2.jpg"></td>
-                        <td>Thinuli</td>
-                        <td>Gothatuwa</td>
-                        <td>966611444v</td>
-                        <td>Darmapala mawatha,Panniptiya</td>
-                        <td>3</td>
-                        <td class="red">delete</td>
-                    </tr>
-                    <tr>
-                        <td class="regno">5<img src="../resource/Images/profile_img2.jpg"></td>
-                        <td>Yamuna</td>
-                        <td>Rajakaruna</td>
-                        <td>966511965v</td>
-                        <td>school road, Panniptiya</td>
-                        <td>2</td>
-                        <td class="red">delete</td>
-                    </tr>
             </table>
+        
         
         </div>
     </div>

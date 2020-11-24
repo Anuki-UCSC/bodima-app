@@ -11,9 +11,9 @@ echo $_GET['id'];
 if(isset($_SESSION['email'])){
     header('Location:../views/boardingpage_detailed.php?id='.$_GET['id']);
 }
-// else{
-//     header('Location:../views/boardings.php
-// }
+else{
+    header('Location:../views/boardings_live.php');
+}
 
 ?>
 

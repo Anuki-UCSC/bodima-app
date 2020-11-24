@@ -1,3 +1,10 @@
+<?php 
+require_once ('../config/database.php');
+        require_once ('../models/reg_userIshan.php');
+     
+        session_start(); 
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +32,28 @@
        }
      
      ?>
+
+     <?php 
+     $st_email=$_SESSION['email'];
+     $result=reg_userIshan::selectStToBoarder($st_email,$connection);
+     $user=mysqli_fetch_assoc($result);
+      $first_name=$user['first_name'];
+            $last_name=$user['last_name'];
+            $nic=$user['nic'];
+            $keymoney=$user['keymoney'];
+            $BOid=$user['BOid'];
+             $B_post_id=$user['B_post_id'];
+            $house_num=$user['house_num'];
+            $lane=$user['lane'];
+            $city=$user['city'];
+
+
+      //  $result1=reg_userIshan::getBONamepayhere($st_email,$connection); 
+      //  $user1=mysqli_fetch_assoc($result1);   
+      // echo  $BOfirst_name=$user1['first_name'];
+      //  echo $BOlast_name=$user1['last_name']; 
+
+      ?>
            <form action="https://sandbox.payhere.lk/pay/checkout" method="post">
             <!-- <p>Address</p>
             <input type="text" name="address" placeholder="Enter Address Name">
@@ -36,24 +65,32 @@
             <input type="password" name="password" placeholder="Enter Password"> -->
 
             <input type="hidden" name="merchant_id" value="1215562">    <!-- Replace your Merchant ID -->
-            <input type="hidden" name="return_url" value="http://localhost:1234/applicationNew/views/successIshan.php">
-            <input type="hidden" name="cancel_url" value="http://localhost:1234/applicationNew/views/successIshan.php">
-            <input type="hidden" name="notify_url" value="http://localhost:1234/applicationNew/config/paycon.php"> 
+            <input type="hidden" name="return_url" value='http://localhost/bodima-app/controller/payhereOnlineSuccessIshan.php?success'>
+            <input type="hidden" name="cancel_url" value="http://localhost/bodima-app/controller/payhereOnlineCancelIshanphp">
+            <input type="hidden" name="notify_url" value="http://localhost/bodima-app/config/paycon.php"> 
 
 
-            <br><br>Item Details<br>
-            <input type="text" name="order_id" value="ItemNo12345">
-            <input type="text" name="items" value="Door bell wireless"><br>
-            <input type="text" name="currency" value="LKR">
-            <input type="text" name="amount" value="1000">  
-
-            <p>Customer Details</p>
-            <input type="text" name="first_name" value="Saman">
-            <input type="text" name="last_name" value="Perera"><br>
-            <input type="text" name="email" value="samanp@gmail.com">
-            <input type="text" name="phone" value="0771234567"><br>
-            <input type="text" name="address" value="No.1, Galle Road">
-            <input type="text" name="city" value="Colombo">
+            <br><p>Boarding Details</p>
+           
+            <input type="hidden" name="order_id" value="<?php echo $B_post_id;?>">
+            <p>Boarding address:</p>
+            <input type="text" name="baddress" value="<?php echo $house_num.", ". $lane.", ".$city;?>">
+            <p>Boarding Owner Name :</p>
+            <input type="text" name="items" value="<?php echo $city." Boarding KeyMoney";?>"><br>
+            <input type="hidden" name="currency" value="LKR">
+            <p>KeyMoney Price(LKR):</p>
+            <input type="text" name="amount" value="<?php echo $keymoney;?>">  
+<br><br>
+            <p>My Details</p>
+            <p>First Name:</p>
+            <input type="text" name="first_name" value="<?php echo $first_name;?>">
+            <p>Last Name:</p>
+            <input type="text" name="last_name" value="<?php echo $last_name;?>"><br>
+            <p>Email:</p>
+            <input type="text" name="email" value="<?php echo $st_email;?>">
+         
+            <input type="hidden" name="address" value="No.1, Galle Road">
+            <input type="hidden" name="city" value="Colombo">
             <input type="hidden" name="country" value="Sri Lanka"><br><br> 
             <input type="submit" value="Buy Now" name="value"> 
 

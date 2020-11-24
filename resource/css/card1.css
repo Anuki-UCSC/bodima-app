@@ -201,7 +201,7 @@ body{
   }
 
   .price-details{
-      height: 55%;
+      /* height: 60%; */
       width: 60%;
       margin: 0 auto;
       margin-bottom: 20px;
@@ -324,9 +324,23 @@ body{
 }
 .details form input[type="text"]{
   width: 100%;
+  outline: blue;
+  border: 1px solid blue;
 }
 
 .slide-nav-animate ul li{
   font-weight: bold;
   color: rgb(255, 255, 255);
+}
+
+/* .details form label{
+  display: inline-block;
+  width: 100%;
+} */
+.payment_method{
+  margin-left: 10px;
+  display: flex;
+}
+.payment_method label{
+  margin-left: 10px;
 }

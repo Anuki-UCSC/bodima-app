@@ -70,8 +70,10 @@ body {
 
 
 img{
+    width: 220px; /* width of container */
+    height: 150px; /* height of container */
+    overflow: hidden;
     
-    height:150px;
 }
 
 .img_th{
